@@ -1,5 +1,5 @@
 ---
-ueberschrift: Gasthaus zum Goldenen Schwein
+ueberschrift: Gasthaus zum Goldenen Hirsch
 untertitel: Traditionelle Wiener Küche in gemütlicher Atmosphäre
 willkommenstext: Seit 1987 servieren wir im Herzen des 7. Bezirks ehrliche
   Wiener Hausmannskost. Ob Wiener Schnitzel, Tafelspitz oder hausgemachter
