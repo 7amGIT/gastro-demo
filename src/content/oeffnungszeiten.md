@@ -6,6 +6,4 @@ zeiten:
     zeit: 17:00 – 23:00
   - tag: Sonntag
     zeit: Ruhetag
-  - tag: Feiertags
-    zeit: Ruhetag
 ---
