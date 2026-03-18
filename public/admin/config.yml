@@ -1,0 +1,51 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "seiten"
+    label: "Seiten"
+    files:
+      - name: "startseite"
+        label: "Startseite"
+        file: "src/content/startseite.md"
+        fields:
+          - { label: "Überschrift", name: "ueberschrift", widget: "string" }
+          - { label: "Untertitel", name: "untertitel", widget: "string" }
+          - { label: "Willkommenstext", name: "willkommenstext", widget: "text" }
+
+      - name: "oeffnungszeiten"
+        label: "Öffnungszeiten"
+        file: "src/content/oeffnungszeiten.md"
+        fields:
+          - label: "Zeiten"
+            name: "zeiten"
+            widget: "list"
+            fields:
+              - { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Zeit", name: "zeit", widget: "string" }
+
+      - name: "ueber-uns"
+        label: "Über uns"
+        file: "src/content/ueber-uns.md"
+        fields:
+          - { label: "Geschichte", name: "geschichte", widget: "markdown" }
+
+  - name: "speisekarte"
+    label: "Speisekarte"
+    folder: "src/content/speisekarte"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Kategorie", name: "title", widget: "string" }
+      - { label: "Reihenfolge", name: "reihenfolge", widget: "number" }
+      - label: "Gerichte"
+        name: "gerichte"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Beschreibung", name: "beschreibung", widget: "string" }
+          - { label: "Preis", name: "preis", widget: "number", value_type: "float" }

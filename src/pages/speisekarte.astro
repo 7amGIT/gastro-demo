@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import matter from 'gray-matter';
+import { readFileSync, readdirSync } from 'fs';
+
+const files = readdirSync('src/content/speisekarte');
+const speisekarte = files
+    .map(file => matter(readFileSync(`src/content/speisekarte/${file}`, 'utf-8')).data)
+    .sort((a, b) => a.reihenfolge - b.reihenfolge);
+---
+
+<Layout title="Speisekarte">
+    <section class="speisekarte">
+        <h1>Unsere Speisekarte</h1>
+        <p class="subtitle">Saisonal & regional — täglich frisch zubereitet</p>
+
+        {speisekarte.map((kategorie) => (
+                <div class="kategorie">
+                    <h2>{kategorie.title}</h2>
+                    <div class="gerichte">
+                        {kategorie.gerichte.map((gericht) => (
+                                <div class="gericht">
+                                    <div class="gericht-info">
+                                        <h3>{gericht.name}</h3>
+                                        <p>{gericht.beschreibung}</p>
+                                    </div>
+                                    <span class="preis">{gericht.preis.toFixed(2)} €</span>
+                                </div>
+                        ))}
+                    </div>
+                </div>
+        ))}
+    </section>
+</Layout>
+
+<style>
+    .speisekarte {
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.4rem;
+        color: #1a1a2e;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        margin-bottom: 3rem;
+    }
+
+    .kategorie {
+        margin-bottom: 2.5rem;
+    }
+
+    .kategorie h2 {
+        font-size: 1.6rem;
+        color: #d4a94b;
+        border-bottom: 2px solid #d4a94b;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .gericht {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .gericht h3 {
+        font-size: 1.1rem;
+        color: #2c2c2c;
+        margin-bottom: 0.25rem;
+    }
+
+    .gericht p {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    .preis {
+        font-weight: bold;
+        color: #1a1a2e;
+        white-space: nowrap;
+        margin-left: 2rem;
+        font-size: 1.05rem;
+    }
+</style>

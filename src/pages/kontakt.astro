@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Kontakt">
+    <section class="kontakt">
+        <h1>Kontakt & Reservierung</h1>
+        <p class="subtitle">Wir freuen uns auf Ihre Nachricht</p>
+
+        <div class="kontakt-grid">
+            <div class="kontakt-info">
+                <div class="info-item">
+                    <h3>Adresse</h3>
+                    <p>Beispielgasse 12<br>1070 Wien</p>
+                </div>
+                <div class="info-item">
+                    <h3>Telefon</h3>
+                    <p>+43 1 234 5678</p>
+                </div>
+                <div class="info-item">
+                    <h3>E-Mail</h3>
+                    <p>info@goldener-hirsch.at</p>
+                </div>
+                <div class="info-item">
+                    <h3>Öffnungszeiten</h3>
+                    <p>Mo–Fr: 11:00–22:00<br>Sa: 17:00–23:00<br>So: Ruhetag</p>
+                </div>
+            </div>
+
+            <form class="kontakt-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="betreff">Betreff</label>
+                <select id="betreff" name="betreff">
+                    <option value="reservierung">Reservierung</option>
+                    <option value="frage">Allgemeine Frage</option>
+                    <option value="feedback">Feedback</option>
+                </select>
+
+                <label for="nachricht">Nachricht</label>
+                <textarea id="nachricht" name="nachricht" rows="5" required></textarea>
+
+                <button type="submit">Absenden</button>
+            </form>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .kontakt {
+        max-width: 900px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.4rem;
+        color: #1a1a2e;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        margin-bottom: 3rem;
+    }
+
+    .kontakt-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .info-item {
+        margin-bottom: 1.5rem;
+    }
+
+    .info-item h3 {
+        color: #d4a94b;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .info-item p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .kontakt-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #333;
+        margin-top: 0.5rem;
+    }
+
+    input, select, textarea {
+        padding: 0.6rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 0.95rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #d4a94b;
+    }
+
+    button {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        background-color: #d4a94b;
+        color: #1a1a2e;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    button:hover {
+        background-color: #c49a3f;
+    }
+</style>

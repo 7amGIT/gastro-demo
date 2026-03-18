@@ -1,11 +1,128 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import matter from 'gray-matter';
+import { readFileSync } from 'fs';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const startseite = matter(readFileSync('src/content/startseite.md', 'utf-8')).data;
+const oeffnungszeiten = matter(readFileSync('src/content/oeffnungszeiten.md', 'utf-8')).data;
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Startseite">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>{startseite.ueberschrift}</h1>
+            <p>{startseite.untertitel}</p>
+            <a href="/speisekarte" class="cta-button">Zur Speisekarte</a>
+        </div>
+    </section>
+
+    <section class="intro">
+        <h2>Willkommen bei uns</h2>
+        <p>{startseite.willkommenstext}</p>
+    </section>
+
+    <section class="oeffnungszeiten">
+        <h2>Öffnungszeiten</h2>
+        <div class="zeiten-grid">
+            {oeffnungszeiten.zeiten.map((item) => (
+                    <div class="zeit-item">
+                        <span class="tag">{item.tag}</span>
+                        <span class="zeit">{item.zeit}</span>
+                    </div>
+            ))}
+        </div>
+    </section>
 </Layout>
+
+<style>
+    .hero {
+        background-color: #1a1a2e;
+        color: white;
+        padding: 6rem 2rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        color: #d4a94b;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: #ccc;
+        margin-bottom: 2rem;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background-color: #d4a94b;
+        color: #1a1a2e;
+        padding: 0.75rem 2rem;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+
+    .cta-button:hover {
+        background-color: #c49a3f;
+    }
+
+    .intro {
+        max-width: 800px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+        text-align: center;
+    }
+
+    .intro h2 {
+        font-size: 2rem;
+        color: #1a1a2e;
+        margin-bottom: 1rem;
+    }
+
+    .intro p {
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .oeffnungszeiten {
+        max-width: 600px;
+        margin: 4rem auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        text-align: center;
+    }
+
+    .oeffnungszeiten h2 {
+        font-size: 1.8rem;
+        color: #1a1a2e;
+        margin-bottom: 1.5rem;
+    }
+
+    .zeiten-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .zeit-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .tag {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .zeit {
+        color: #666;
+    }
+</style>

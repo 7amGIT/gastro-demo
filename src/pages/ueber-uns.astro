@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import matter from 'gray-matter';
+import { readFileSync } from 'fs';
+
+const data = matter(readFileSync('src/content/ueber-uns.md', 'utf-8')).data;
+const paragraphs = data.geschichte.split('\n\n');
+---
+
+<Layout title="Über uns">
+    <section class="ueber-uns">
+        <h1>Über uns</h1>
+        <div class="story">
+            {paragraphs.map((p) => (
+                    <p>{p}</p>
+            ))}
+        </div>
+
+        <div class="team">
+            <h2>Unser Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo-placeholder"></div>
+                    <h3>Maria Gruber</h3>
+                    <p>Inhaberin & Gastgeberin</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo-placeholder"></div>
+                    <h3>Thomas Gruber</h3>
+                    <p>Küchenchef</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .ueber-uns {
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.4rem;
+        color: #1a1a2e;
+        margin-bottom: 2rem;
+    }
+
+    .story p {
+        font-size: 1.05rem;
+        color: #555;
+        margin-bottom: 1.2rem;
+        line-height: 1.8;
+    }
+
+    .team {
+        margin-top: 3rem;
+    }
+
+    .team h2 {
+        font-size: 1.8rem;
+        color: #1a1a2e;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .team-member {
+        text-align: center;
+    }
+
+    .team-photo-placeholder {
+        width: 120px;
+        height: 120px;
+        background-color: #ddd;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+    }
+
+    .team-member h3 {
+        font-size: 1.1rem;
+        color: #2c2c2c;
+    }
+
+    .team-member p {
+        color: #777;
+        font-size: 0.9rem;
+    }
+</style>

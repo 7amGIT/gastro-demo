@@ -1,23 +1,156 @@
+---
+const { title } = Astro.props
+---
+
+---
+const { title } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Gasthaus zum Goldenen Hirsch - Traditionelle Wiener Küche" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Gasthaus zum Goldenen Hirsch</title>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <a href="/" class="logo">Zum Goldenen Hirsch</a>
+        <ul>
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/speisekarte">Speisekarte</a></li>
+            <li><a href="/ueber-uns">Über uns</a></li>
+            <li><a href="/kontakt">Kontakt</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <slot />
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Gasthaus zum Goldenen Hirsch</h3>
+            <p>Traditionelle Wiener Küche seit 1987</p>
+        </div>
+        <div class="footer-section">
+            <h3>Öffnungszeiten</h3>
+            <p>Mo–Fr: 11:00–22:00</p>
+            <p>Sa: 17:00–23:00</p>
+            <p>So: Ruhetag</p>
+        </div>
+        <div class="footer-section">
+            <h3>Kontakt</h3>
+            <p>Beispielgasse 12, 1070 Wien</p>
+            <p>Tel: +43 1 234 5678</p>
+            <p>info@goldener-hirsch.at</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Gasthaus zum Goldenen Hirsch. Alle Rechte vorbehalten.</p>
+    </div>
+</footer>
+</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Georgia', serif;
+        color: #2c2c2c;
+        background-color: #faf8f5;
+        line-height: 1.6;
+    }
+
+    nav {
+        background-color: #1a1a2e;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .nav-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        color: #d4a94b;
+        font-size: 1.4rem;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+
+    nav a:hover {
+        color: #d4a94b;
+    }
+
+    main {
+        min-height: 60vh;
+    }
+
+    footer {
+        background-color: #1a1a2e;
+        color: #ccc;
+        padding: 3rem 0 1rem;
+        margin-top: 4rem;
+    }
+
+    .footer-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: #d4a94b;
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+    }
+
+    .footer-section p {
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .footer-bottom {
+        max-width: 1100px;
+        margin: 2rem auto 0;
+        padding: 1rem 2rem 0;
+        border-top: 1px solid #333;
+        text-align: center;
+        font-size: 0.8rem;
+    }
 </style>

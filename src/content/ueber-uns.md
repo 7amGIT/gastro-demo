@@ -1,0 +1,3 @@
+---
+geschichte: "Das Gasthaus zum Goldenen Hirsch wurde 1987 von Familie Gruber gegründet und wird heute in zweiter Generation geführt. Was als kleines Beisl im 7. Bezirk begann, ist heute ein fester Bestandteil der Wiener Gastronomieszene.\n\nUnsere Philosophie ist einfach: ehrliche Küche mit regionalen Zutaten. Wir beziehen unser Fleisch vom Bauernhof in Niederösterreich, das Gemüse kommt saisonal vom Markt, und unsere Mehlspeisen werden jeden Tag frisch in der eigenen Küche zubereitet.\n\nOb Stammtisch am Abend, Mittagsmenü in der Pause oder Familienfeier im Extrazimmer — wir freuen uns auf Ihren Besuch."
+---
